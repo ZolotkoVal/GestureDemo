@@ -42,6 +42,17 @@ class GestureTests {
   val file = File(context.getExternalFilesDir(null),"$name.png")
   file.outputStream().use { rule.onRoot().captureToImage().asAndroidBitmap().compress(Bitmap.CompressFormat.PNG,100,it) }
  }
+ @Test fun tapDoubleTapAndLongPress() {
+  show { TapPressDemo() }
+  val target = bounds().center
+  rule.onRoot().performTouchInput { click(target) }
+  rule.waitUntil(3000) { rule.onAllNodesWithText("onTap Detected").fetchSemanticsNodes().isNotEmpty() }
+  rule.onRoot().performTouchInput { doubleClick(target) }
+  rule.onNodeWithText("onDoubleTap Detected").assertIsDisplayed()
+  rule.onRoot().performTouchInput { longClick(target, 1000) }
+  rule.onNodeWithText("onLongPress Detected").assertIsDisplayed()
+  shot("tap-longpress")
+ }
  @Test fun clickAlternatesColors() {
   show { ClickDemo() }
   val before = bounds()
