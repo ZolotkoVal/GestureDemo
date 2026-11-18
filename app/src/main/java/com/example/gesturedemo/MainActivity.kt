@@ -19,6 +19,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
+ ClickDemo(modifier)
 }
 
 @Preview(showBackground = true)
