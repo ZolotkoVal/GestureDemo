@@ -42,6 +42,19 @@ class GestureTests {
   val file = File(context.getExternalFilesDir(null),"$name.png")
   file.outputStream().use { rule.onRoot().captureToImage().asAndroidBitmap().compress(Bitmap.CompressFormat.PNG,100,it) }
  }
+ @Test fun twoPointersTranslateBox() {
+  show { MultiTouchDemo() }
+  val before = bounds()
+  val c = before.center
+  val r = before.width / 4f
+  val delta = Offset(100f,140f)
+  rule.onRoot().performTouchInput {
+   pinch(c-Offset(r,0f),c-Offset(r,0f)+delta,c+Offset(r,0f),c+Offset(r,0f)+delta,800)
+  }
+  val after = bounds()
+  shot("multitouch-translation")
+  assertTrue("Two-pointer pan must move box",after.left>before.left+50f && after.top>before.top+70f)
+ }
  @Test fun twoPointersRotateBox() {
   show { MultiTouchDemo() }
   val before = bounds()
