@@ -42,6 +42,19 @@ class GestureTests {
   val file = File(context.getExternalFilesDir(null),"$name.png")
   file.outputStream().use { rule.onRoot().captureToImage().asAndroidBitmap().compress(Bitmap.CompressFormat.PNG,100,it) }
  }
+ @Test fun photoScrollsInBothDirections() {
+  show { ScrollModifiers() }
+  val start = rule.onRoot().captureToImage().asAndroidBitmap()
+  shot("photo-start")
+  rule.onRoot().performTouchInput { swipe(Offset(250f,180f),Offset(60f,180f),800) }
+  val horizontal = rule.onRoot().captureToImage().asAndroidBitmap()
+  assertFalse("Horizontal scroll must change visible photo",start.sameAs(horizontal))
+  shot("photo-horizontal")
+  rule.onRoot().performTouchInput { swipe(Offset(180f,250f),Offset(180f,60f),800) }
+  val vertical = rule.onRoot().captureToImage().asAndroidBitmap()
+  assertFalse("Vertical scroll must change visible photo",horizontal.sameAs(vertical))
+  shot("photo-vertical")
+ }
  @Test fun scrollableMovesRedBoxVertically() {
   show { ScrollableModifier() }
   val before = bounds(Color.Red)

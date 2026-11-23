@@ -26,6 +26,23 @@ import androidx.compose.foundation.gestures.rememberDraggableState
 import kotlin.math.roundToInt
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.gestures.rememberScrollableState
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.geometry.Offset
+
+@Composable
+fun ScrollModifiers(modifier: Modifier = Modifier) {
+ val image = ImageBitmap.imageResource(R.drawable.vacation)
+ Box(modifier.size(150.dp).verticalScroll(rememberScrollState()).horizontalScroll(rememberScrollState())) {
+  Canvas(Modifier.size(360.dp, 270.dp)) {
+   drawImage(image = image, topLeft = Offset.Zero)
+  }
+ }
+}
 
 @Composable
 fun ScrollableModifier(modifier: Modifier = Modifier) {
