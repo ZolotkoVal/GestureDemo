@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
- PointerInputDrag(modifier)
+ ScrollableModifier(modifier)
 }
 
 @Preview(showBackground = true)

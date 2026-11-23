@@ -42,6 +42,15 @@ class GestureTests {
   val file = File(context.getExternalFilesDir(null),"$name.png")
   file.outputStream().use { rule.onRoot().captureToImage().asAndroidBitmap().compress(Bitmap.CompressFormat.PNG,100,it) }
  }
+ @Test fun scrollableMovesRedBoxVertically() {
+  show { ScrollableModifier() }
+  val before = bounds(Color.Red)
+  rule.onRoot().performTouchInput { swipe(before.center,before.center + Offset(0f,180f),1500) }
+  val after = bounds(Color.Red)
+  assertTrue(after.top > before.top + 80f)
+  assertEquals(before.left,after.left,4f)
+  shot("scroll-red")
+ }
  @Test fun pointerDragMovesBothAxes() {
   show { PointerInputDrag() }
   val before = bounds()

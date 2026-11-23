@@ -24,6 +24,17 @@ import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import kotlin.math.roundToInt
+import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.gestures.rememberScrollableState
+
+@Composable
+fun ScrollableModifier(modifier: Modifier = Modifier) {
+ var offset by remember { mutableStateOf(0f) }
+ Box(modifier.fillMaxSize().scrollable(orientation = Orientation.Vertical,
+  state = rememberScrollableState { distance -> offset += distance; distance })) {
+  Box(Modifier.size(90.dp).offset { IntOffset(0, offset.roundToInt()) }.background(Color.Red))
+ }
+}
 
 @Composable
 fun PointerInputDrag(modifier: Modifier = Modifier) {
