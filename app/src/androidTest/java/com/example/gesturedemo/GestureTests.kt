@@ -42,6 +42,18 @@ class GestureTests {
   val file = File(context.getExternalFilesDir(null),"$name.png")
   file.outputStream().use { rule.onRoot().captureToImage().asAndroidBitmap().compress(Bitmap.CompressFormat.PNG,100,it) }
  }
+ @Test fun twoPointersRotateBox() {
+  show { MultiTouchDemo() }
+  val before = bounds()
+  val c = before.center
+  val r = before.width / 4f
+  rule.onRoot().performTouchInput {
+   pinch(c-Offset(r,0f),c-Offset(r*0.866f,r*0.5f),c+Offset(r,0f),c+Offset(r*0.866f,r*0.5f),800)
+  }
+  val after = bounds()
+  shot("multitouch-rotation")
+  assertTrue("Rotation must change silhouette",after.width > before.width*1.15f && after.height > before.height*1.15f)
+ }
  @Test fun twoPointersScaleBox() {
   show { MultiTouchDemo() }
   val before = bounds()
@@ -109,8 +121,11 @@ class GestureTests {
   show { ClickDemo() }
   val before = bounds()
   rule.onRoot().performTouchInput { click(before.center) }
+  android.os.SystemClock.sleep(500) // Ripple is rendered outside the Compose test clock.
   bounds(Color.DarkGray)
   rule.onRoot().performTouchInput { click(before.center) }
+  shot("click-before-ripple-settles")
+  android.os.SystemClock.sleep(500)
   bounds()
   shot("click-blue")
  }

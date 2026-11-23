@@ -40,11 +40,13 @@ import androidx.compose.ui.graphics.graphicsLayer
 @Composable
 fun MultiTouchDemo(modifier: Modifier = Modifier) {
  var scale by remember { mutableStateOf(1f) }
- val state = rememberTransformableState { scaleChange, _, _ ->
+ var angle by remember { mutableStateOf(0f) }
+ val state = rememberTransformableState { scaleChange, _, rotationChange ->
   scale *= scaleChange
+  angle += rotationChange
  }
  Box(contentAlignment = Alignment.Center, modifier = modifier.fillMaxSize()) {
-  Box(Modifier.graphicsLayer(scaleX = scale, scaleY = scale)
+  Box(Modifier.graphicsLayer(scaleX = scale, scaleY = scale, rotationZ = angle)
    .transformable(state).background(Color.Blue).size(100.dp))
  }
 }
