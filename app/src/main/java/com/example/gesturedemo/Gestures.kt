@@ -17,6 +17,22 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
+import kotlin.math.roundToInt
+
+@Composable
+fun DragDemo(modifier: Modifier = Modifier) {
+ Box(modifier.fillMaxSize()) {
+  var xOffset by remember { mutableStateOf(0f) }
+  Box(Modifier.offset { IntOffset(xOffset.roundToInt(), 0) }.size(100.dp).background(Color.Blue)
+   .draggable(orientation = Orientation.Horizontal,
+    state = rememberDraggableState { distance -> xOffset += distance }))
+ }
+}
 
 @Composable
 fun ClickDemo(modifier: Modifier = Modifier) {

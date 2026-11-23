@@ -42,6 +42,15 @@ class GestureTests {
   val file = File(context.getExternalFilesDir(null),"$name.png")
   file.outputStream().use { rule.onRoot().captureToImage().asAndroidBitmap().compress(Bitmap.CompressFormat.PNG,100,it) }
  }
+ @Test fun dragMovesOnlyHorizontally() {
+  show { DragDemo() }
+  val before = bounds()
+  rule.onRoot().performTouchInput { swipe(before.center,before.center + Offset(160f,100f),600) }
+  val after = bounds()
+  assertTrue(after.left > before.left + 80f)
+  assertEquals(before.top,after.top,4f)
+  shot("drag-horizontal")
+ }
  @Test fun tapDoubleTapAndLongPress() {
   show { TapPressDemo() }
   val target = bounds().center
