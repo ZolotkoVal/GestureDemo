@@ -1,0 +1,58 @@
+{
+  "host_time": "2026-11-23T22:30:47.051221+07:00",
+  "tests": {
+    "twoPointersScaleBox": {
+      "status": "PASS",
+      "log": "08-device-tests.log"
+    },
+    "pointerDragMovesBothAxes": {
+      "status": "PASS",
+      "log": "08-device-tests.log"
+    },
+    "dragMovesOnlyHorizontally": {
+      "status": "PASS",
+      "log": "08-device-tests.log"
+    },
+    "clickAlternatesColors": {
+      "status": "PASS",
+      "log": "09-rotation-red-click-green.log"
+    },
+    "photoScrollsInBothDirections": {
+      "status": "PASS",
+      "log": "08-device-tests.log"
+    },
+    "scrollableMovesRedBoxVertically": {
+      "status": "PASS",
+      "log": "08-device-tests.log"
+    },
+    "tapDoubleTapAndLongPress": {
+      "status": "PASS",
+      "log": "08-device-tests.log"
+    },
+    "twoPointersRotateBox": {
+      "status": "PASS",
+      "log": "09-rotation-green.log"
+    },
+    "twoPointersTranslateBox": {
+      "status": "PASS",
+      "log": "10-translation-green.log"
+    }
+  },
+  "unique_passed": 9,
+  "archived_stages_verified": 10,
+  "photo_sha256": "cff924b5300f0e3b8cd203720f3bbb0e9b2e873226e2fc8dd5f438a259df9ef7",
+  "lint": {
+    "Error": 0,
+    "Warning": 8,
+    "Fatal": 0,
+    "Information": 0
+  },
+  "lint_ids": [
+    "AutoboxingStateCreation",
+    "DataExtractionRules",
+    "GradleDependency",
+    "IconLocation",
+    "MissingApplicationIcon"
+  ],
+  "apk_sha256": "23ab873a5e2750f1951147d1aa4851306ce2a3b0af809adbc9a641b5cb70648b"
+}

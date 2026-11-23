@@ -1,0 +1,72 @@
+[
+  {
+    "stage": "01-project",
+    "commit": "f41932f7b8bdd36c9e1f7961b7f58395239a65c6",
+    "message": "Создание проекта GestureDemo",
+    "build": "PASS",
+    "apk_sha256": "a9ba82f3aa0753af3baf5b604b3b94132dee4571077ceda6a697afb4eec9b386"
+  },
+  {
+    "stage": "02-click",
+    "commit": "b27ea4e683b5bb75d114b562dbaee18ebd36a944",
+    "message": "Реализация обработки одиночных нажатий",
+    "build": "PASS",
+    "apk_sha256": "89a89bb7bf90977b1cc8893e79081707f93b6e35e17a7afbc5a9dac8519a4660"
+  },
+  {
+    "stage": "03-tap",
+    "commit": "5fd7289928b3145c2026093ef147e5d29d5a8344",
+    "message": "Распознавание нажатий и долгого удержания",
+    "build": "PASS",
+    "apk_sha256": "11eca87516ff0a58e1d0d834aebf18f350ae8a0408b3526f2e3cde140fe6a1f8"
+  },
+  {
+    "stage": "04-drag",
+    "commit": "9f0ff09d71d640a81c9124021a1fa6d94526bfe7",
+    "message": "Горизонтальное перетаскивание компонента",
+    "build": "PASS",
+    "apk_sha256": "cbbcbe9ed877ed95451c8a74528ff3f823177a8a14916cb59b87932ad9b91601"
+  },
+  {
+    "stage": "05-pointer",
+    "commit": "ac22cfb70ef1166281e6c683e537e0c9bc76b7ac",
+    "message": "Перетаскивание компонента по двум осям",
+    "build": "PASS",
+    "apk_sha256": "b1e7c73aa4211acfb6f391f7ea1232b22408ffc335592ccbbb15e3979080f7b7"
+  },
+  {
+    "stage": "06-scroll",
+    "commit": "934256160552fd78ff5eaee016073cb42f48b79b",
+    "message": "Реализация вертикальной прокрутки",
+    "build": "PASS",
+    "apk_sha256": "2a48acfef8922ce383e423088d2dcb0282067965af34359223b645853a09e8fb"
+  },
+  {
+    "stage": "07-photo",
+    "commit": "6fa9cf674b8ab61df3bffd4da68b4f4208714c8e",
+    "message": "Прокрутка изображения по двум направлениям",
+    "build": "PASS",
+    "apk_sha256": "d4b96a055605a276defbe4ce0edf43fad912069bfbba408b0ba1468b41136700"
+  },
+  {
+    "stage": "08-scale",
+    "commit": "304b086744ba3c645998a22b5cc4bb80e0fa4696",
+    "message": "Масштабирование жестом двумя пальцами",
+    "build": "PASS",
+    "apk_sha256": "f99702ee88dc06389043aa8ae9645978e6a909389d25657148789ebb76f8c902"
+  },
+  {
+    "stage": "09-rotation",
+    "commit": "f9fabfcf99b0f183623ae74d87b89f9088abf4ac",
+    "message": "Добавление поворота жестом",
+    "build": "PASS",
+    "apk_sha256": "462bbdeada2f7b289aaf238c06a9c215efea230392e7000bca1976aa0e0e257c"
+  },
+  {
+    "stage": "10-lint-refreshed",
+    "commit": "98dffb4cc169b65d1373dfc7a6ec90244ea1ffb6",
+    "message": "Перемещение компонента мультитач-жестом",
+    "build": "PASS",
+    "apk_sha256": "23ab873a5e2750f1951147d1aa4851306ce2a3b0af809adbc9a641b5cb70648b"
+  }
+]
