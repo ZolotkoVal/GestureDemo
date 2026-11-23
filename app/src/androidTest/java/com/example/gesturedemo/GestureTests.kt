@@ -42,6 +42,19 @@ class GestureTests {
   val file = File(context.getExternalFilesDir(null),"$name.png")
   file.outputStream().use { rule.onRoot().captureToImage().asAndroidBitmap().compress(Bitmap.CompressFormat.PNG,100,it) }
  }
+ @Test fun twoPointersScaleBox() {
+  show { MultiTouchDemo() }
+  val before = bounds()
+  val c = before.center
+  val r = before.width / 4f
+  shot("multitouch-initial")
+  rule.onRoot().performTouchInput {
+   pinch(c-Offset(r,0f),c-Offset(r*1.7f,0f),c+Offset(r,0f),c+Offset(r*1.7f,0f),800)
+  }
+  val after = bounds()
+  assertTrue("Pinch must enlarge box",after.width > before.width*1.25f && after.height > before.height*1.25f)
+  shot("multitouch-scaled")
+ }
  @Test fun photoScrollsInBothDirections() {
   show { ScrollModifiers() }
   val start = rule.onRoot().captureToImage().asAndroidBitmap()
