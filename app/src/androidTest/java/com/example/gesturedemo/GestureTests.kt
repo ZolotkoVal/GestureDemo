@@ -42,6 +42,14 @@ class GestureTests {
   val file = File(context.getExternalFilesDir(null),"$name.png")
   file.outputStream().use { rule.onRoot().captureToImage().asAndroidBitmap().compress(Bitmap.CompressFormat.PNG,100,it) }
  }
+ @Test fun pointerDragMovesBothAxes() {
+  show { PointerInputDrag() }
+  val before = bounds()
+  rule.onRoot().performTouchInput { swipe(before.center,before.center + Offset(160f,180f),600) }
+  val after = bounds()
+  assertTrue(after.left > before.left + 80f && after.top > before.top + 100f)
+  shot("drag-both-axes")
+ }
  @Test fun dragMovesOnlyHorizontally() {
   show { DragDemo() }
   val before = bounds()

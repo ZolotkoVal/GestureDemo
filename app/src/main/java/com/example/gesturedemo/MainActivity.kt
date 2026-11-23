@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
- DragDemo(modifier)
+ PointerInputDrag(modifier)
 }
 
 @Preview(showBackground = true)
